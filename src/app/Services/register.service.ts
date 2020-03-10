@@ -19,12 +19,16 @@ export class DataRegisterService {
         return this.http.get<any[]>('/api/Register/'+id);
     }
     saveRegister(item) {
-        if(item.id) {
+       
             return this.http.put<any[]>('/api/Register/'+item.id, item);
-        } else {
-            return this.http.post<any[]>('/api/Register/',item);
-        }
+     
+           
+   
     }
+    create(item){
+        return this.http.post<any[]>('/api/Register/',item);
+    }
+
     deleteInvoice(id) {
         return this.http.delete<any[]>('/api/Register/'+id);
     }

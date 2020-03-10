@@ -12,9 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./register-edit.component.scss']
 })
 export class RegisterEditComponent implements OnInit {
-id;
+  id;
   formregister: FormGroup;
-
+  listregister = [];
   constructor(public serviceRegister:DataRegisterService,private route: ActivatedRoute,private router: Router) { 
 
     this.formregister = new FormGroup({
@@ -33,6 +33,10 @@ id;
     });
   }
   ngOnInit() {
+    this.serviceRegister.getRegister().subscribe(item => {
+      this.listregister = item;
+      console.log(item);
+    });
     const id = this.route.snapshot.paramMap.get("id");
     this.id = id;
     console.log(id);
@@ -56,23 +60,36 @@ id;
     }
   }
   submitForm(value){
-    if(this.id){
+    if(this.id !== 'new'){
       this.serviceRegister.saveRegister(value).subscribe(item => {
         this.router.navigate(["/Registro"]);
 
       })
     }else{
-      this.serviceRegister.saveRegister(value).subscribe(item => {
+      const id = Number(this.listregister.length)
+      let obj = {
+        id:this.listregister.length + 1 ,
+        name:value.name,
+        email:value.email,
+        role:value.role,
+        status:value.id,
+        prm1:value.prm1,
+        prm2:value.prm2,
+        prm3:value.prm3,
+        prm4:value.prm4
+      }
+      console.log(obj)
+      this.serviceRegister.create(obj).subscribe(item => {
         this.router.navigate(["/Registro"]);
       })
     }
-    console.log(value)
-    // let obj = {
-    //   name: value.name,
-    //   email: value.email,
-    //   role: value.role,
-    //   status: value.status
-    // }
+
+    let obj = {
+      name: value.name,
+      email: value.email,
+      role: value.role,
+      status: value.status
+    }
   
     
   }
