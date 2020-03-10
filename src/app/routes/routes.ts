@@ -13,7 +13,7 @@ export const routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', redirectTo: 'login', pathMatch: 'full' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'test', loadChildren: './test2/test2.module#Test2Module' },
             { path: 'Registro', loadChildren: './register/register.module#RegisterModule' },
