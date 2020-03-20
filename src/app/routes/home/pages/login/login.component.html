@@ -2,12 +2,13 @@
     <div class="block-center mt-4 wd-xl">
         <!-- START card-->
         <div class="card card-flat">
-            <div class="card-header text-center">
-                <a href="#">
+            <div class="card-header text-center pb-0">
+                <a >
                     <img class="block-center rounded" src="assets/img/logo.png" alt="Image" width="80px" />
                 </a>
+                <h4 style=" color: cornflowerblue;">Claribot</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body pt-0">
                 <p class="text-center py-2">Inicio de sesión.</p>
                 <form [formGroup]="valForm" class="form-validate mb-3" role="form" name="loginForm" novalidate="" (submit)="submitForm($event, valForm.value)">
                     <div class="form-group">

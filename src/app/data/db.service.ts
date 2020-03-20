@@ -5,7 +5,9 @@ import { DataDB } from './register';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     return {
-      'Register': DataDB.Register
+      'Register': DataDB.Register,
+      'Account': DataDB.Account
+
     };
   }
 }

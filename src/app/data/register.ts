@@ -45,7 +45,77 @@ export class DataDB {
         prm3:true,
         prm4:true
     }
-
-
 ]
+    static Account = [
+        {
+            id:1,
+            name:"Jesus Alejandro",
+            address:"767 Vicente Guerrero Los Mochis, Sinaloa",
+            numAccount:3,
+            typecontract:"",
+            typeservice:"Agua",
+            lastreading:200,
+            lastpayment:{
+                fecha:"19/03/2020",
+                cm:350.50
+            },
+            onBoarding:"Facebook",
+            detail:{
+                name:"Jesus Alejandro",
+                numAccount:3,
+                reading:
+                [
+                    {
+                        fecha:"2/03/20",
+                        cm:30000
+                    },
+                    {
+                        fecha:"8/03/20",
+                        cm:50000
+                    },
+                    {
+                        fecha:"12/03/20",
+                        cm:60000
+                    },
+                    {
+                        fecha:"18/03/20",
+                        cm:40000
+                    },
+                    {
+                        fecha:"20/03/20",
+                        cm:25000
+                    }
+                ],
+                pagos:
+                [
+                    {
+                        fecha:"2/03/20",
+                        price:650.30,
+                        cm:30000
+                    },
+                    {
+                        fecha:"8/03/20",
+                        price:850.30,
+                        cm:50000
+                    },
+                    {
+                        fecha:"12/03/20",
+                        price:750.30,
+                        cm:60000
+                    },
+                    {
+                        fecha:"18/03/20",
+                        price:6550.30,
+                        cm:40000
+                    },
+                    {
+                        fecha:"20/03/20",
+                        price:1550.30,
+                        cm:25000
+                    }
+                ]
+            
+            }
+        }
+    ]
 }

@@ -1,0 +1,322 @@
+<div class="main-container ">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="m-0">Lista de usuarios</h3>
+    </div>
+    <div class="col">
+      <p class="text-18">Ve la lista de usuarios, edita, habilita/deshabilita o agrega nuevos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-4">
+
+  </div>
+  <div class="col text-right">
+    <button class="mb-1 mr-1 btn btn-success" type="button" routerLink="/Registro/new">Agregar nuevo
+      usuario</button>
+  </div>
+</div>
+<div class="main-container">
+  <div class="row">
+    <div class="col">
+      <div class="card card-default mt-4">
+        <div class="card-body ">
+          <ngx-datatable #table class="bootstrap expandable material fullscreen "
+            style="height: calc(90vh - 270px); box-shadow: none; width: 100%;" [columnMode]="'force'"
+            [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [scrollbarV]="true" [scrollbarH]="true"
+            [rows]='list' (page)="onPage($event)">
+            <!-- Column Templates -->
+            <ngx-datatable-column name="#" [width]="40" [canAutoResize]="false">
+              <ng-template let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <strong>{{rowIndex + 1}}</strong>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nombre(s)">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.name}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Direccion">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <strong>{{row.address }}</strong>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Numero de cuenta">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <p class="pl-4">
+                  {{row.numAccount}}
+                </p>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tipo de contrato">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.typecontract}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tipo de servicio">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.typeservice}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Ultima lectura">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.lastreading }} cm³
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Ultimo pago">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.lastpayment.fecha}} -- $ {{row.lastpayment.cm}} 
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Metodo de contacto">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.onBoarding}}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Acción" [width]="250" [canAutoResize]="false">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button class="btn btn-info m-1" type="button" (click)="Modal.show();show(row.id)" >
+                  <a class="fas fa-eye"></a> </button>
+                  <button class="btn btn-success m-1" type="button" (click)="lectura.show();show(row.id)" >
+                    <a class="fas fa-book"></a> </button>
+                    <button class="btn btn-primary m-1" type="button" (click)="pagos.show();show(row.id)" >
+                      <a class="fas fa-clipboard"></a> </button>
+                <button class="btn btn-danger" (click)="delete(row)">
+                  <a class="fas fa-trash-alt"></a>
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #Modal="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " style="height: 52%;width: 100%;">
+    <div class="modal-content" style="width: 116%;">
+      <div class="modal-header p-0">
+        <div class="brand-logo" style="font-size: 20px;padding: 8px;">
+          <img class="img-fluid" src="assets/img/logo.png" alt="App Logo" style="height: 54px;" />
+            Detalles
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="Modal.hide();"
+          style="font-size: 34px;padding: 23px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="container">
+          <div class="row">
+            <table class="table">
+              <tbody>
+                  <tr>
+                      <td>
+                          <strong>Nombre</strong>
+                      </td>
+                      <td>{{data.name}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Dirección</strong>
+                      </td>
+                      <td>{{data.address}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Numero de cuenta</strong>
+                      </td>
+                      <td>{{data.numAccount}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Tipo de contrato</strong>
+                      </td>
+                      <td>{{data.typecontract}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <strong>Tipo de Servicio</strong>
+                    </td>
+                    <td>{{data.typeservice}}</td>
+                </tr>
+                  <tr>
+                      <td>
+                          <strong>Ultima lectura</strong>
+                      </td>
+                      <td>{{data.lastreading}}cm³</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>ultimo pago</strong>
+                      </td>
+                      <td>{{detail.fecha}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <strong>Metros cúbicos</strong>
+                    </td>
+                    <td>$ {{detail.cm  }}</td>
+                </tr>
+                <tr>
+                  <td>
+                      <strong>Metodo de comunicación</strong>
+                  </td>
+                  <td>{{data.onBoarding}}</td>
+              </tr>
+                  <!-- <tr>
+                      <td>
+                          <strong>Members</strong>
+                      </td>
+                      <td>
+                          <p>Tara Sanders</p>
+                          <p>Alan Smith</p>
+                          <p>Priscilla Peters</p>
+                          <p>Madison Willis</p>
+                          <p>Lesa Marshall</p>
+                          <p>Kylie Freeman</p>
+                      </td>
+                  </tr> -->
+                
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #lectura="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " style="height: 52%;width: 100%;">
+    <div class="modal-content" style="width: 116%;">
+      <div class="modal-header p-0">
+        <div class="brand-logo" style="font-size: 20px;padding: 8px;">
+          <img class="img-fluid" src="assets/img/logo.png" alt="App Logo" style="height: 54px;" />
+            Historial de lecturas
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="lectura.hide();"
+          style="font-size: 34px;padding: 23px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="container">
+          <div class="row">
+            <table class="table">
+              <tbody>
+                  <tr>
+                      <td>
+                          <strong>Nombre</strong>
+                      </td>
+                      <td>{{data.name}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Numero de contrato</strong>
+                      </td>
+                      <td>{{data.numAccount}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Historial de lecturas</strong>
+                      </td>
+
+                      <table class="table">
+                        <thead>
+                           <tr>
+                              <th>#</th>
+                              <th>Fecha</th>
+                              <th>cm³</th>
+                           </tr>
+                        </thead>
+                        <tbody *ngFor="let item of reading; let  i =index;">
+                           <tr>
+                              <td>{{i + 1}}</td>
+                              <td>{{item.fecha}}</td>
+                              <td>{{item.cm  }}cm³</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </tr>
+              
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #pagos="bs-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg " style="height: 52%;width: 100%;">
+    <div class="modal-content" style="width: 116%;">
+      <div class="modal-header p-0">
+        <div class="brand-logo" style="font-size: 20px;padding: 8px;">
+          <img class="img-fluid" src="assets/img/logo.png" alt="App Logo" style="height: 54px;" />
+            Historial de lecturas
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="pagos.hide();"
+          style="font-size: 34px;padding: 23px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body pt-0">
+        <div class="container">
+          <div class="row">
+            <table class="table">
+              <tbody>
+                  <tr>
+                      <td>
+                          <strong>Nombre</strong>
+                      </td>
+                      <td>{{data.name}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Numero de contrato</strong>
+                      </td>
+                      <td>{{data.numAccount}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <strong>Historial de pagos</strong>
+                      </td>
+
+                      <table class="table">
+                        <thead>
+                           <tr>
+                              <th>#</th>
+                              <th>Fecha</th>
+                              <th>Pago</th>
+                              <th>cm³</th>
+                           </tr>
+                        </thead>
+                        <tbody *ngFor="let item2 of allpagos; let  i =index;">
+
+                           <tr>
+                              <td>{{i + 1}}</td>
+                              <td>{{item2.fecha}}</td>
+                              <td>$ {{item2.price}}</td>
+                              <td>{{item2.cm  }}cm³</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </tr>
+              
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

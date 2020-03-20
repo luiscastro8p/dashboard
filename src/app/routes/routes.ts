@@ -13,11 +13,15 @@ export const routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'login', pathMatch: 'full' },
+            { path: '', redirectTo: '/login', pathMatch: 'full' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'test', loadChildren: './test2/test2.module#Test2Module' },
             { path: 'Registro', loadChildren: './register/register.module#RegisterModule' },
-            { path: 'Registro/:id', loadChildren: './register-edit/register-edit.module#RegisterEditModule' }
+            { path: 'Registro/:id', loadChildren: './register-edit/register-edit.module#RegisterEditModule'},
+            { path: 'Accounts', loadChildren: './accounts/accounts.module#AccountsModule' },
+            { path: 'Accounts/:id', loadChildren: './accounts-edit/accounts-edit.module#AccountsEditModule'},
+
+
         ]
     },
 
