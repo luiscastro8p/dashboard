@@ -6,7 +6,8 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     return {
       'Register': DataDB.Register,
-      'Account': DataDB.Account
+      'Account': DataDB.Account,
+      'Notification':DataDB.Notification
 
     };
   }

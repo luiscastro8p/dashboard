@@ -118,4 +118,36 @@ export class DataDB {
             }
         }
     ]
+
+    static Notification = [
+        {
+            id:1, 
+            name:"Jose Maria",
+            job:"Gerente",
+            phone:8188080,
+            notify:"Cuando sea una fuga"
+        },
+        {
+            id:2,              
+            name:"Jose Ocaranza",
+            job:"Intendente",
+            phone:6684845044,
+            notify:"Cuando el bot no pueda responder"
+        },
+        {
+            id:3,
+            name:"Luis Vega",
+            job:"Supervisor",
+            phone:6688659524,
+            notify:"Cuando sea una fuga"
+        },
+        {
+            id:4,
+            name:"Jesus Garcia",
+            job:"Empleado",
+            phone:6683542554,
+            notify:"Cuando el bot no pueda responder"
+        },
+
+    ]
 }

@@ -16,6 +16,10 @@ const test = {
         {
             text: 'Cuentas y servicios',
             link: '/Accounts'
+        },
+        {
+            text: 'Usuarios',
+            link: '/user'
         }
     ]
 };

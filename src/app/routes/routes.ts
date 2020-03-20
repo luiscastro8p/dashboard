@@ -20,6 +20,8 @@ export const routes = [
             { path: 'Registro/:id', loadChildren: './register-edit/register-edit.module#RegisterEditModule'},
             { path: 'Accounts', loadChildren: './accounts/accounts.module#AccountsModule' },
             { path: 'Accounts/:id', loadChildren: './accounts-edit/accounts-edit.module#AccountsEditModule'},
+            { path: 'user', loadChildren: './user-notification/user-notification.module#UserNotificationModule' },
+            { path: 'user/:id', loadChildren: './user-notification-edit/user-notification-edit.module#UserNotificationEditModule'},
 
 
         ]
