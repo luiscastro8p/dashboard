@@ -20,6 +20,10 @@ const test = {
         {
             text: 'Usuarios',
             link: '/user'
+        },
+        {
+            text: 'onboarding',
+            link: '/onboarding'
         }
     ]
 };

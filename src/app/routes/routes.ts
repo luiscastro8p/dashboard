@@ -22,7 +22,8 @@ export const routes = [
             { path: 'Accounts/:id', loadChildren: './accounts-edit/accounts-edit.module#AccountsEditModule'},
             { path: 'user', loadChildren: './user-notification/user-notification.module#UserNotificationModule' },
             { path: 'user/:id', loadChildren: './user-notification-edit/user-notification-edit.module#UserNotificationEditModule'},
-
+            { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingModule' },
+            { path: 'onboarding/:id', loadChildren: './onboarding-edit/onboarding-edit.module#OnboardingEditModule'},
 
         ]
     },

@@ -54,7 +54,10 @@ export class DataDB {
             numAccount:3,
             typecontract:"",
             typeservice:"Agua",
-            lastreading:200,
+            lastreading:{
+                fecha:"19/03/2020",
+                cm:350.50
+            },
             lastpayment:{
                 fecha:"19/03/2020",
                 cm:350.50
@@ -116,6 +119,152 @@ export class DataDB {
                 ]
             
             }
+        },
+        {
+            id:2,
+            name:"Juan Carrillo",
+            address:"28 de Junio 884 Los Mochis, Sinaloa",
+            numAccount:559,
+            typecontract:"",
+            typeservice:"Agua",
+            lastreading:{
+                fecha:"22/03/2020",
+                cm:450.50
+            },
+            lastpayment:{
+                fecha:"10/03/2020",
+                cm:3050.50
+            },
+            onBoarding:"Correo electronico",
+            detail:{
+                name:"Juan Carrillo",
+                numAccount:559,
+                reading:
+                [
+                    {
+                        fecha:"2/03/20",
+                        cm:35060
+                    },
+                    {
+                        fecha:"8/03/20",
+                        cm:54670
+                    },
+                    {
+                        fecha:"12/03/20",
+                        cm:61230
+                    },
+                    {
+                        fecha:"18/03/20",
+                        cm:423423
+                    },
+                    {
+                        fecha:"20/03/20",
+                        cm:254444
+                    }
+                ],
+                pagos:
+                [
+                    {
+                        fecha:"2/03/20",
+                        price:1650.30,
+                        cm:334343
+                    },
+                    {
+                        fecha:"8/03/20",
+                        price:4850.30,
+                        cm:534344
+                    },
+                    {
+                        fecha:"12/03/20",
+                        price:750.30,
+                        cm:634344
+                    },
+                    {
+                        fecha:"18/03/20",
+                        price:550.30,
+                        cm:423420
+                    },
+                    {
+                        fecha:"20/03/20",
+                        price:6550.30,
+                        cm:253434
+                    }
+                ]
+            
+            }
+        },
+        {
+            id:2,
+            name:"Pedrito Kamelo",
+            address:"Adolfo Lopez Mateos 202 pte Los Mochis, Sinaloa",
+            numAccount:124,
+            typecontract:"",
+            typeservice:"Agua",
+            lastreading:{
+                fecha:"23/03/2020",
+                cm:850.50
+            },
+            lastpayment:{
+                fecha:"10/03/2020",
+                cm:3050.50
+            },
+            onBoarding:"Correo electronico",
+            detail:{
+                name:"Pedrito Kamelo",
+                numAccount:124,
+                reading:
+                [
+                    {
+                        fecha:"2/03/20",
+                        cm:35060
+                    },
+                    {
+                        fecha:"8/03/20",
+                        cm:54670
+                    },
+                    {
+                        fecha:"12/03/20",
+                        cm:61230
+                    },
+                    {
+                        fecha:"18/03/20",
+                        cm:423423
+                    },
+                    {
+                        fecha:"20/03/20",
+                        cm:254444
+                    }
+                ],
+                pagos:
+                [
+                    {
+                        fecha:"2/03/20",
+                        price:1650.30,
+                        cm:334343
+                    },
+                    {
+                        fecha:"8/03/20",
+                        price:4850.30,
+                        cm:534344
+                    },
+                    {
+                        fecha:"12/03/20",
+                        price:750.30,
+                        cm:634344
+                    },
+                    {
+                        fecha:"18/03/20",
+                        price:550.30,
+                        cm:423420
+                    },
+                    {
+                        fecha:"20/03/20",
+                        price:6550.30,
+                        cm:253434
+                    }
+                ]
+            
+            }
         }
     ]
 
@@ -149,5 +298,38 @@ export class DataDB {
             notify:"Cuando el bot no pueda responder"
         },
 
+    ]
+    
+    static onboarding = [
+        {
+            id:1,
+            name:"Example",
+            sms:"mensaje cualquiera",
+            alcance:20
+        },
+        {
+            id:2,
+            name:"Ejemplo",
+            sms:"mensaje cualquiera",
+            alcance:20
+        },
+        {
+            id:3,
+            name:"Ejemplo en chino",
+            sms:"mensaje cualquiera",
+            alcance:20
+        },
+        {
+            id:4,
+            name:"Ejemplo en Japon",
+            sms:"mensaje cualquiera",
+            alcance:20
+        },
+        {
+            id:5,
+            name:"Easy ",
+            sms:"mensaje cualquiera",
+            alcance:20
+        }
     ]
 }
